@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // backgroundColor: , // Or AppColors.background
       body: Center(
         child: SvgPicture.asset(
-          'assets/images/intro-logo.svg', // your original SVG
+          'assets/images/van.svg', // your original SVG
           // width: MediaQuery.of(context).size.width * 0.4,
           // height: MediaQuery.of(context).size.height * 0.2,
           // fit: BoxFit.contain,

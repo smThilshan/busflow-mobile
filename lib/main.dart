@@ -1,3 +1,8 @@
+import 'package:bus_flow_admin/config/theme/app_theme.dart';
+import 'package:bus_flow_admin/core/router/app_router.dart';
+import 'package:bus_flow_admin/presentation/dashboard/screens/dashboard_screen.dart';
+import 'package:bus_flow_admin/presentation/login/screens/login_screen.dart';
+import 'package:bus_flow_admin/presentation/splash/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,18 +12,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Bus Flow Admin')),
-        body: const Center(child: Text('Welcome to Bus Flow Admin App!')),
-      ),
+    return MaterialApp.router(
+      title: 'Bus Flow - Admin App',
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.light, // can switch to system if needed
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
     );
   }
 }

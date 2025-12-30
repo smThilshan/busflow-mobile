@@ -11,13 +11,7 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [
-    // LocationDashboardScreen(driverId: 1),
-    DashboardScreen(),
-    // const TripsScreen(),
-    // const HiresScreen(),
-    // const ProfileScreen(),
-  ];
+  final List<Widget> _screens = [DashboardScreen()];
 
   void _onItemTapped(int index) {
     setState(() {
