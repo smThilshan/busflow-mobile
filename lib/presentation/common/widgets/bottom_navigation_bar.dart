@@ -1,4 +1,7 @@
 import 'package:bus_flow_admin/presentation/dashboard/screens/dashboard_screen.dart';
+import 'package:bus_flow_admin/presentation/dashboard/screens/hire_screen.dart';
+import 'package:bus_flow_admin/presentation/dashboard/screens/trip_screen.dart';
+import 'package:bus_flow_admin/presentation/profile/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainLayout extends StatefulWidget {
@@ -14,9 +17,9 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Widget> _screens = [
     // LocationDashboardScreen(driverId: 1),
     DashboardScreen(),
-    // const TripsScreen(),
-    // const HiresScreen(),
-    // const ProfileScreen(),
+    const TripScreen(),
+    const HireScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -42,12 +45,12 @@ class _MainLayoutState extends State<MainLayout> {
           NavigationDestination(
             icon: Icon(Icons.assignment_outlined),
             selectedIcon: Icon(Icons.assignment),
-            label: 'My Orders',
+            label: 'Trips',
           ),
           NavigationDestination(
-            icon: Icon(Icons.access_time_outlined),
+            icon: Icon(Icons.car_rental_rounded),
             selectedIcon: Icon(Icons.access_time_filled),
-            label: 'Hours',
+            label: 'Hires',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),

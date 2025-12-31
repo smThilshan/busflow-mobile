@@ -1,3 +1,4 @@
+import 'package:bus_flow_admin/presentation/add-income/add_new_hire.dart';
 import 'package:bus_flow_admin/presentation/add-income/add_new_trip.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/bottom_navigation_bar.dart';
 import 'package:bus_flow_admin/presentation/dashboard/screens/dashboard_screen.dart';
@@ -6,7 +7,7 @@ import 'package:bus_flow_admin/presentation/splash/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart' show GoRouter, GoRoute;
 
 final GoRouter router = GoRouter(
-  initialLocation: '/add-new-trip',
+  initialLocation: '/',
   routes: [
     GoRoute(path: '/splash', builder: (context, state) => const SplashScreen()),
     GoRoute(
@@ -18,6 +19,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/add-new-trip',
       builder: (context, state) => const AddNewTrip(),
+    ),
+    GoRoute(
+      path: '/add-new-hire',
+      builder: (context, state) => const AddNewHire(),
     ),
   ],
 );
