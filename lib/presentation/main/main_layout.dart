@@ -1,4 +1,4 @@
-import 'package:bus_flow_admin/presentation/dashboard/screens/dashboard_screen.dart';
+import 'package:bus_flow_admin/presentation/dashboard/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainLayout extends StatefulWidget {
@@ -11,7 +11,7 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [DashboardScreen()];
+  final List<Widget> _screens = [HomeScreen()];
 
   void _onItemTapped(int index) {
     setState(() {

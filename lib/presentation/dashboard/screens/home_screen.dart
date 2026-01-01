@@ -1,31 +1,32 @@
+import 'package:bus_flow_admin/core/ui/app_spacing.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/greeting_text.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/info_banner_widget.dart';
 import 'package:bus_flow_admin/presentation/dashboard/widgets/dashboard_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
-class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   bool isOnline = false;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     final String today = DateFormat('dd MMMM, yyyy').format(DateTime.now());
 
     return Scaffold(
-      // backgroundColor: theme.colorScheme.background,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -71,20 +72,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Expanded(
                 child: ListView(
                   children: [
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 30),
 
                     DashboardCard(
                       icon: Icons.add_circle_outline,
                       title: "Add New Trip",
                       subtitle: "Add new completed trips & hires",
-                      onTap: () {},
+                      onTap: () {
+                        context.push("/add-new-trip");
+                      },
                     ),
                     const SizedBox(height: 16),
                     DashboardCard(
                       icon: Icons.remove_circle_outline,
                       title: "Expense",
-                      subtitle: "Mainternance and other expenses",
-                      // trailingText: "11",
+                      subtitle: "Maintenance and other expenses",
+
                       onTap: () {},
                     ),
                   ],

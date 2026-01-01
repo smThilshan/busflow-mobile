@@ -1,4 +1,4 @@
-import 'package:bus_flow_admin/presentation/dashboard/screens/dashboard_screen.dart';
+import 'package:bus_flow_admin/presentation/dashboard/screens/home_screen.dart';
 import 'package:bus_flow_admin/presentation/dashboard/screens/hire_screen.dart';
 import 'package:bus_flow_admin/presentation/dashboard/screens/trip_screen.dart';
 import 'package:bus_flow_admin/presentation/profile/screens/profile_screen.dart';
@@ -15,8 +15,7 @@ class _MainLayoutState extends State<MainLayout> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    // LocationDashboardScreen(driverId: 1),
-    DashboardScreen(),
+    const HomeScreen(),
     const TripScreen(),
     const HireScreen(),
     const ProfileScreen(),

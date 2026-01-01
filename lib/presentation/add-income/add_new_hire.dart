@@ -36,7 +36,7 @@ class _AddNewHireState extends State<AddNewHire> {
                   children: [
                     Expanded(
                       child: CustomDropdown<String>(
-                        hint: "Days",
+                        label: "Days",
                         value: selectedBus,
                         items: ["01", "02", "03"],
                         itemLabel: (bus) => "Bus No: $bus",
@@ -50,7 +50,7 @@ class _AddNewHireState extends State<AddNewHire> {
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
                       child: CustomDropdown<String>(
-                        hint: "Date",
+                        label: "Date",
                         value: selectedBus,
                         items: ["2231", "2232", "2233"],
                         itemLabel: (bus) => "Bus No: $bus",

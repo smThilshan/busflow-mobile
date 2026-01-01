@@ -3,6 +3,7 @@ import 'package:bus_flow_admin/presentation/common/widgets/custom_action_btn.dar
 import 'package:bus_flow_admin/presentation/common/widgets/custom_dropdown_widget.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AddNewTrip extends StatefulWidget {
   const AddNewTrip({super.key});
@@ -24,6 +25,10 @@ class _AddNewTripState extends State<AddNewTrip> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Add New Trip"),
+        leading: BackButton(), // optional, automatically appears
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -36,7 +41,7 @@ class _AddNewTripState extends State<AddNewTrip> {
                   children: [
                     Expanded(
                       child: CustomDropdown<String>(
-                        hint: "Trips",
+                        label: "Trips",
                         value: selectedBus,
                         items: ["01", "02", "03"],
                         itemLabel: (bus) => "Bus No: $bus",
@@ -50,7 +55,7 @@ class _AddNewTripState extends State<AddNewTrip> {
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
                       child: CustomDropdown<String>(
-                        hint: "Date",
+                        label: "Date",
                         value: selectedBus,
                         items: ["2231", "2232", "2233"],
                         itemLabel: (bus) => "Bus No: $bus",
@@ -96,9 +101,14 @@ class _AddNewTripState extends State<AddNewTrip> {
                   hint: "Rs 000.00",
                   keyboardType: TextInputType.number,
                 ),
-                SizedBox(height: AppSpacing.sm),
+                SizedBox(height: AppSpacing.lg),
 
-                CustomActionBtn(text: "Add", onPressed: () {}),
+                CustomActionBtn(
+                  text: "Add",
+                  onPressed: () {
+                    context.push('/preview-new-trip');
+                  },
+                ),
               ],
             ),
           ),

@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Navigate to SplashPage after 2 seconds
     Future.delayed(const Duration(seconds: 2), () {
-      context.go('/splash');
+      context.go('/');
     });
   }
 
@@ -24,15 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      // backgroundColor: , // Or AppColors.background
-      body: Center(
-        child: SvgPicture.asset(
-          'assets/images/van.svg', // your original SVG
-          // width: MediaQuery.of(context).size.width * 0.4,
-          // height: MediaQuery.of(context).size.height * 0.2,
-          // fit: BoxFit.contain,
-        ),
-      ),
+      body: Center(child: SvgPicture.asset('assets/images/van.svg')),
     );
   }
 }
