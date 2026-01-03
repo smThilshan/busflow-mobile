@@ -1,5 +1,6 @@
 import 'package:bus_flow_admin/core/ui/app_spacing.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_action_btn.dart';
+import 'package:bus_flow_admin/presentation/common/widgets/custom_datepicker_widget.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_dropdown_widget.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -19,16 +20,13 @@ class _AddNewTripState extends State<AddNewTrip> {
   final TextEditingController _driverSalaryController = TextEditingController();
   final TextEditingController _conductorSalaryController =
       TextEditingController();
-  String? selectedBus;
-  String? selectedDate;
+  String? noOfTrips;
+  DateTime? selectedDate;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Add New Trip"),
-        leading: BackButton(), // optional, automatically appears
-      ),
+      appBar: AppBar(title: const Text("Add New Trip"), leading: BackButton()),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -42,26 +40,23 @@ class _AddNewTripState extends State<AddNewTrip> {
                     Expanded(
                       child: CustomDropdown<String>(
                         label: "Trips",
-                        value: selectedBus,
+                        value: noOfTrips,
                         items: ["01", "02", "03"],
-                        itemLabel: (bus) => "Bus No: $bus",
                         onChanged: (value) {
                           setState(() {
-                            selectedBus = value;
+                            noOfTrips = value;
                           });
                         },
                       ),
                     ),
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
-                      child: CustomDropdown<String>(
+                      child: CustomDatePicker(
                         label: "Date",
-                        value: selectedBus,
-                        items: ["2231", "2232", "2233"],
-                        itemLabel: (bus) => "Bus No: $bus",
-                        onChanged: (value) {
+                        selectedDate: selectedDate,
+                        onDateSelected: (date) {
                           setState(() {
-                            selectedBus = value;
+                            selectedDate = date;
                           });
                         },
                       ),

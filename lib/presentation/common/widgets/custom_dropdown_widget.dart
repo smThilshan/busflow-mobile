@@ -1,11 +1,9 @@
-import 'package:bus_flow_admin/core/ui/app_spacing.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropdown<T> extends StatelessWidget {
   final String label;
   final T? value;
   final List<T> items;
-  final String Function(T) itemLabel;
   final ValueChanged<T?> onChanged;
 
   const CustomDropdown({
@@ -13,7 +11,6 @@ class CustomDropdown<T> extends StatelessWidget {
     required this.label,
     required this.value,
     required this.items,
-    required this.itemLabel,
     required this.onChanged,
   });
 
@@ -40,7 +37,7 @@ class CustomDropdown<T> extends StatelessWidget {
               .map(
                 (item) => DropdownMenuItem<T>(
                   value: item,
-                  child: Text(itemLabel(item)),
+                  child: Text(item.toString()),
                 ),
               )
               .toList(),

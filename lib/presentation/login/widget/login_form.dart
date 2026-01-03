@@ -14,9 +14,6 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    // final auth = Provider.of<AuthProvider>(context);
-    final size = MediaQuery.of(context).size;
-
     return Form(
       key: _formKey,
       child: Column(

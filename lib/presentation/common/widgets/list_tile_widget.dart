@@ -4,8 +4,7 @@ class ListTileWidget extends StatelessWidget {
   final String orderNo;
   final String date;
 
-  const ListTileWidget({Key? key, required this.orderNo, required this.date})
-    : super(key: key);
+  const ListTileWidget({super.key, required this.orderNo, required this.date});
 
   @override
   Widget build(BuildContext context) {

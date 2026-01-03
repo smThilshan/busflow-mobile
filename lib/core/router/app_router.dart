@@ -15,10 +15,7 @@ final GoRouter router = GoRouter(
     GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
     GoRoute(path: '/', builder: (context, state) => const MainLayout()),
 
-    GoRoute(
-      path: '/dashboard',
-      builder: (context, state) => const HomeScreen(),
-    ),
+    GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),
     GoRoute(
       path: '/add-new-trip',
       builder: (context, state) => const AddNewTrip(),

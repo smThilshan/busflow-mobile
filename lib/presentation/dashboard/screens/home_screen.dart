@@ -3,7 +3,6 @@ import 'package:bus_flow_admin/presentation/common/widgets/greeting_text.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/info_banner_widget.dart';
 import 'package:bus_flow_admin/presentation/dashboard/widgets/dashboard_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
@@ -20,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    // final size = MediaQuery.of(context).size;
     final String today = DateFormat('dd MMMM, yyyy').format(DateTime.now());
 
     return Scaffold(
@@ -76,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     DashboardCard(
                       icon: Icons.add_circle_outline,
-                      title: "Add New Trip",
+                      title: "Add New",
                       subtitle: "Add new completed trips & hires",
                       onTap: () {
                         context.push("/add-new-trip");

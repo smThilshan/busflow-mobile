@@ -1,5 +1,6 @@
 import 'package:bus_flow_admin/core/ui/app_spacing.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_action_btn.dart';
+import 'package:bus_flow_admin/presentation/common/widgets/custom_datepicker_widget.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_dropdown_widget.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _AddNewHireState extends State<AddNewHire> {
   final TextEditingController _conductorSalaryController =
       TextEditingController();
   String? selectedBus;
-  String? selectedDate;
+  DateTime? selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class _AddNewHireState extends State<AddNewHire> {
                         label: "Days",
                         value: selectedBus,
                         items: ["01", "02", "03"],
-                        itemLabel: (bus) => "Bus No: $bus",
+                        // itemLabel: (bus) => "Bus No: $bus",
                         onChanged: (value) {
                           setState(() {
                             selectedBus = value;
@@ -49,14 +50,12 @@ class _AddNewHireState extends State<AddNewHire> {
                     ),
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
-                      child: CustomDropdown<String>(
-                        label: "Date",
-                        value: selectedBus,
-                        items: ["2231", "2232", "2233"],
-                        itemLabel: (bus) => "Bus No: $bus",
-                        onChanged: (value) {
+                      child: CustomDatePicker(
+                        label: "label",
+                        selectedDate: selectedDate,
+                        onDateSelected: (date) {
                           setState(() {
-                            selectedBus = value;
+                            selectedDate = date;
                           });
                         },
                       ),

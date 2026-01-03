@@ -1,5 +1,7 @@
 import 'package:bus_flow_admin/core/ui/app_spacing.dart';
+import 'package:bus_flow_admin/presentation/common/widgets/custom_action_btn.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PreviewNewTrip extends StatefulWidget {
   const PreviewNewTrip({super.key});
@@ -98,6 +100,13 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
                     ),
                   );
                 }).toList(),
+              ),
+              SizedBox(height: AppSpacing.xl),
+              CustomActionBtn(
+                text: "Save",
+                onPressed: () {
+                  context.push("/home");
+                },
               ),
             ],
           ),
