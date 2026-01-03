@@ -1,5 +1,4 @@
 import 'package:bus_flow_admin/core/ui/app_spacing.dart';
-import 'package:bus_flow_admin/presentation/common/widgets/custom_action_btn.dart';
 import 'package:flutter/material.dart';
 
 class PreviewNewTrip extends StatefulWidget {
@@ -7,7 +6,7 @@ class PreviewNewTrip extends StatefulWidget {
 
   // Example data
   final List<Map<String, dynamic>> incomeData = const [
-    {"label": "Date - Kalpitiya - Puttalam", "amount": 10200.00},
+    {"label": "Kalpitiya - Puttalam", "amount": 10200.00},
     {"label": "Puttalam - Kalpitiya", "amount": 10200.00},
     {"label": "Total", "amount": 20400.00},
   ];
@@ -34,7 +33,7 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Income & Expense Preview")),
+      appBar: AppBar(title: const Text("Confirmation ")),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
@@ -43,16 +42,27 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
             children: [
               /// Income Section
               buildSection("Income", widget.incomeData),
+              SizedBox(height: AppSpacing.lg),
 
-              const SizedBox(height: 32), // Big space
               /// Expense Section
               buildSection("Expenses", widget.expenseData, showNote: true),
 
-              const SizedBox(height: 32), // Big space
+              SizedBox(height: AppSpacing.lg),
+
               /// Summary Section
+              const Text(
+                "Summary",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              SizedBox(height: AppSpacing.md),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: widget.summaryData.entries.map((e) {
+                  final bool isEarned = e.key == "Earned";
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6),
                     child: Row(
@@ -60,9 +70,14 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
                         Expanded(
                           child: Text(
                             e.key,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                            style: TextStyle(
+                              fontWeight: isEarned
+                                  ? FontWeight.bold
+                                  : FontWeight.w500,
+                              color: isEarned
+                                  ? Colors.green.shade800
+                                  : Colors.black87,
+                              fontSize: isEarned ? 16 : 15,
                             ),
                           ),
                         ),
@@ -71,8 +86,8 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
                           child: Text(
                             "${e.value.toStringAsFixed(2)} LKR",
                             textAlign: TextAlign.right,
-                            style: const TextStyle(
-                              fontSize: 16,
+                            style: TextStyle(
+                              fontSize: isEarned ? 18 : 16,
                               fontWeight: FontWeight.w600,
                               fontFeatures: [FontFeature.tabularFigures()],
                             ),
