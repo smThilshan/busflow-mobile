@@ -1,7 +1,7 @@
 import 'package:bus_flow_admin/core/ui/app_spacing.dart';
-import 'package:bus_flow_admin/presentation/bloc/add_trip_bloc.dart';
-import 'package:bus_flow_admin/presentation/bloc/add_trip_event.dart';
-import 'package:bus_flow_admin/presentation/bloc/add_trip_state.dart';
+import 'package:bus_flow_admin/presentation/add-income/hire/bloc/add_hire_bloc.dart';
+import 'package:bus_flow_admin/presentation/add-income/hire/bloc/add_hire_event.dart';
+import 'package:bus_flow_admin/presentation/add-income/hire/bloc/add_hire_state.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_action_btn.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_datepicker_widget.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_dropdown_widget.dart';
@@ -10,32 +10,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class AddNewTrip extends StatefulWidget {
-  const AddNewTrip({super.key});
+class AddNewHire extends StatefulWidget {
+  const AddNewHire({super.key});
 
   @override
-  State<AddNewTrip> createState() => _AddNewTripState();
+  State<AddNewHire> createState() => _AddNewHireState();
 }
 
-class _AddNewTripState extends State<AddNewTrip> {
-  final TextEditingController _fromIncomeController = TextEditingController();
-  final TextEditingController _toIncomeController = TextEditingController();
+class _AddNewHireState extends State<AddNewHire> {
+  final TextEditingController _fromController = TextEditingController();
+  final TextEditingController _toController = TextEditingController();
   final TextEditingController _expensesController = TextEditingController();
   final TextEditingController _driverSalaryController = TextEditingController();
   final TextEditingController _conductorSalaryController =
       TextEditingController();
-  final TextEditingController _dieselController = TextEditingController();
-  String? noOfTrips;
+  final TextEditingController _hireAmountController = TextEditingController();
+  final TextEditingController _dieselExpenseController =
+      TextEditingController();
+  String? noOfDays;
   DateTime? selectedDate;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Add New Trip"), leading: BackButton()),
-      body: BlocListener<AddTripBloc, AddTripState>(
+      appBar: AppBar(title: const Text("Add New Hire"), leading: BackButton()),
+      body: BlocListener<AddHireBloc, AddHireState>(
         listener: (context, state) {
-          if (state is AddTripPreviewReady) {
-            context.push('/preview-new-trip', extra: state.tripPreviewData);
+          if (state is AddHirePreviewReady) {
+            context.push('/preview-new-hire', extra: state.hirePreviewData);
           }
         },
         child: SafeArea(
@@ -45,17 +47,17 @@ class _AddNewTripState extends State<AddNewTrip> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // SizedBox(height: 60),
                   Row(
                     children: [
                       Expanded(
                         child: CustomDropdown<String>(
-                          label: "Trips",
-                          value: noOfTrips,
+                          label: "Days",
+                          value: noOfDays,
                           items: ["01", "02", "03"],
+
                           onChanged: (value) {
                             setState(() {
-                              noOfTrips = value;
+                              noOfDays = value;
                             });
                           },
                         ),
@@ -76,26 +78,30 @@ class _AddNewTripState extends State<AddNewTrip> {
                   ),
                   SizedBox(height: AppSpacing.md),
                   CustomTextField(
-                    label: "Kalpitiya → Puttalam Income",
-                    controller: _fromIncomeController,
-                    hint: "Rs 000.00",
-                    keyboardType: TextInputType.number,
+                    label: "From",
+                    controller: _fromController,
+                    hint: "From Starting Point",
                   ),
                   SizedBox(height: AppSpacing.sm),
                   CustomTextField(
-                    label: "Puttalam → Kalpitiya Income",
-                    controller: _toIncomeController,
+                    label: "To ",
+                    controller: _toController,
+                    hint: "Destination",
+                  ),
+                  SizedBox(height: AppSpacing.sm),
+                  CustomTextField(
+                    label: "Hire Amount",
+                    controller: _hireAmountController,
                     hint: "Rs 000.00",
                     keyboardType: TextInputType.number,
                   ),
                   SizedBox(height: AppSpacing.sm),
                   CustomTextField(
                     label: "Diesel Expense",
-                    controller: _dieselController,
+                    controller: _dieselExpenseController,
                     hint: "Rs 000.00",
                     keyboardType: TextInputType.number,
                   ),
-                  SizedBox(height: AppSpacing.sm),
                   CustomTextField(
                     label: "Expenses",
                     controller: _expensesController,
@@ -116,20 +122,20 @@ class _AddNewTripState extends State<AddNewTrip> {
                     hint: "Rs 000.00",
                     keyboardType: TextInputType.number,
                   ),
-                  SizedBox(height: AppSpacing.lg),
+                  SizedBox(height: AppSpacing.sm),
 
                   CustomActionBtn(
                     text: "Add",
                     onPressed: () {
-                      // context.push('/preview-new-trip');
-                      context.read<AddTripBloc>().add(
-                        SubmitTripEvent(
-                          noOfTrips: int.parse(noOfTrips!),
+                      context.read<AddHireBloc>().add(
+                        SubmitHireEvent(
+                          noOfDays: int.parse(noOfDays!),
                           date: selectedDate!,
-                          fromIncome: double.parse(_fromIncomeController.text),
-                          toIncome: double.parse(_toIncomeController.text),
-                          expenses: double.parse(_expensesController.text),
-                          diesel: double.parse(_dieselController.text),
+                          fromStartLocation: _fromController.text,
+                          toReachLocation: _toController.text,
+                          hireAmount: double.parse(_hireAmountController.text),
+                          diesel: double.parse(_dieselExpenseController.text),
+                          otherExpenses: double.parse(_expensesController.text),
                           driverSalary: double.parse(
                             _driverSalaryController.text,
                           ),

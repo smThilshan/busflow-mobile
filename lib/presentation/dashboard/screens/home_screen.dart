@@ -74,13 +74,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     DashboardCard(
                       icon: Icons.add_circle_outline,
-                      title: "Add New",
-                      subtitle: "Add new completed trips & hires",
+                      title: "Add Trip",
+                      subtitle: "Add new completed trips",
                       onTap: () {
                         context.push("/add-new-trip");
                       },
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: AppSpacing.md),
+                    DashboardCard(
+                      icon: Icons.add_circle_outline,
+                      title: "Add Hire",
+                      subtitle: "Add new completed hires",
+                      onTap: () {
+                        context.push("/add-new-hire");
+                      },
+                    ),
+                    SizedBox(height: AppSpacing.md),
                     DashboardCard(
                       icon: Icons.remove_circle_outline,
                       title: "Expense",

@@ -21,8 +21,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: Center(child: SvgPicture.asset('assets/images/van.svg')),
     );

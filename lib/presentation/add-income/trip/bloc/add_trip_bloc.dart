@@ -1,6 +1,6 @@
 import 'package:bus_flow_admin/domain/entities/trip_preview_data.dart';
-import 'package:bus_flow_admin/presentation/bloc/add_trip_event.dart';
-import 'package:bus_flow_admin/presentation/bloc/add_trip_state.dart';
+import 'package:bus_flow_admin/presentation/add-income/trip/bloc/add_trip_event.dart';
+import 'package:bus_flow_admin/presentation/add-income/trip/bloc/add_trip_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddTripBloc extends Bloc<AddTripEvent, AddTripState> {

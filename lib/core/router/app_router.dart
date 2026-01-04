@@ -1,7 +1,7 @@
-import 'package:bus_flow_admin/presentation/add-income/add_new_hire.dart';
-import 'package:bus_flow_admin/presentation/add-income/add_new_trip.dart';
-import 'package:bus_flow_admin/presentation/add-income/preview_new_hire.dart';
-import 'package:bus_flow_admin/presentation/add-income/preview_new_trip.dart';
+import 'package:bus_flow_admin/presentation/add-income/hire/screens/add_new_hire.dart';
+import 'package:bus_flow_admin/presentation/add-income/trip/screens/add_new_trip.dart';
+import 'package:bus_flow_admin/presentation/add-income/hire/screens/preview_new_hire.dart';
+import 'package:bus_flow_admin/presentation/add-income/trip/screens/preview_new_trip.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/bottom_navigation_bar.dart';
 import 'package:bus_flow_admin/presentation/dashboard/screens/home_screen.dart';
 import 'package:bus_flow_admin/presentation/login/screens/login_screen.dart';
@@ -14,7 +14,6 @@ final GoRouter router = GoRouter(
     GoRoute(path: '/splash', builder: (context, state) => const SplashScreen()),
     GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
     GoRoute(path: '/', builder: (context, state) => const MainLayout()),
-
     GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),
     GoRoute(
       path: '/add-new-trip',

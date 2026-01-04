@@ -1,6 +1,7 @@
 import 'package:bus_flow_admin/config/theme/app_theme.dart';
 import 'package:bus_flow_admin/core/router/app_router.dart';
-import 'package:bus_flow_admin/presentation/bloc/add_trip_bloc.dart';
+import 'package:bus_flow_admin/presentation/add-income/hire/bloc/add_hire_bloc.dart';
+import 'package:bus_flow_admin/presentation/add-income/trip/bloc/add_trip_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AddTripBloc>(create: (context) => AddTripBloc()),
+        BlocProvider<AddHireBloc>(create: (context) => AddHireBloc()),
       ],
       child: MaterialApp.router(
         title: 'Bus Flow - Admin App',
