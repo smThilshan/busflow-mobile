@@ -1,31 +1,11 @@
 import 'package:bus_flow_admin/core/ui/app_spacing.dart';
+import 'package:bus_flow_admin/domain/entities/trip_preview_data.dart';
 import 'package:bus_flow_admin/presentation/common/widgets/custom_action_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PreviewNewTrip extends StatefulWidget {
   const PreviewNewTrip({super.key});
-
-  // Example data
-  final List<Map<String, dynamic>> incomeData = const [
-    {"label": "Kalpitiya - Puttalam", "amount": 10200.00},
-    {"label": "Puttalam - Kalpitiya", "amount": 10200.00},
-    {"label": "Total", "amount": 20400.00},
-  ];
-
-  final List<Map<String, dynamic>> expenseData = const [
-    {"label": "Diesel Expense", "amount": 8864.00},
-    {"label": "Driver Salary", "amount": 2500.00},
-    {"label": "Conductor Salary", "amount": 2000.00},
-    {"label": "Expenses", "amount": 660.00},
-    {"label": "Total", "amount": 14020.00},
-  ];
-
-  final Map<String, double> summaryData = const {
-    "Total Income": 20400.00,
-    "Total Expense": 14020.00,
-    "Earned": 6380.00,
-  };
 
   @override
   State<PreviewNewTrip> createState() => _PreviewNewTripState();
@@ -34,6 +14,29 @@ class PreviewNewTrip extends StatefulWidget {
 class _PreviewNewTripState extends State<PreviewNewTrip> {
   @override
   Widget build(BuildContext context) {
+    final previewData = GoRouterState.of(context).extra as TripPreviewData;
+
+    // Example data
+    final incomeData = [
+      {"label": "Kalpitiya - Puttalam", "amount": previewData.fromIncome},
+      {"label": "Puttalam - Kalpitiya", "amount": previewData.toIncome},
+      {"label": "Total", "amount": previewData.totalIncome},
+    ];
+
+    final expenseData = [
+      {"label": "Diesel Expense", "amount": previewData.diesel},
+      {"label": "Driver Salary", "amount": previewData.driverSalary},
+      {"label": "Conductor Salary", "amount": previewData.conductorSalary},
+      {"label": "Expenses", "amount": previewData.expenses},
+      {"label": "Total", "amount": previewData.totalExpense},
+    ];
+
+    final summaryData = {
+      "Total Income": previewData.totalIncome,
+      "Total Expense": previewData.totalExpense,
+      "Earned": previewData.totalIncome - previewData.totalExpense,
+    };
+
     return Scaffold(
       appBar: AppBar(title: const Text("Confirmation ")),
       body: Padding(
@@ -43,12 +46,11 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// Income Section
-              buildSection("Income", widget.incomeData),
+              buildSection("Income", incomeData),
               SizedBox(height: AppSpacing.lg),
 
               /// Expense Section
-              buildSection("Expenses", widget.expenseData, showNote: true),
-
+              buildSection("Expenses", expenseData, showNote: true),
               SizedBox(height: AppSpacing.lg),
 
               /// Summary Section
@@ -63,7 +65,7 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
               SizedBox(height: AppSpacing.md),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: widget.summaryData.entries.map((e) {
+                children: summaryData.entries.map((e) {
                   final bool isEarned = e.key == "Earned";
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6),
