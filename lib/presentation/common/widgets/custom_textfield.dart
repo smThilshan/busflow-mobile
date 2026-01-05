@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final String? hint;
   final VoidCallback? onTap;
   final ValueChanged<String>? onChanged;
+  final String? Function(String?)? validator;
 
   const CustomTextField({
     super.key,
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.hint,
     this.onTap,
     this.onChanged,
+    this.validator,
   });
 
   @override
@@ -43,13 +45,14 @@ class CustomTextField extends StatelessWidget {
           const SizedBox(height: 6),
 
           /// INPUT
-          TextField(
+          TextFormField(
             controller: controller,
             obscureText: obscure,
             enabled: enabled,
             keyboardType: keyboardType,
             onTap: onTap,
             onChanged: onChanged,
+            validator: validator, // 🔥 THIS WAS NEVER USED BEFORE
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             decoration: InputDecoration(
               hintText: hint,
@@ -68,9 +71,13 @@ class CustomTextField extends StatelessWidget {
                   width: 1.5,
                 ),
               ),
-              disabledBorder: OutlineInputBorder(
+              errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.grey.shade200),
+                borderSide: const BorderSide(color: Colors.red),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(color: Colors.red),
               ),
             ),
           ),

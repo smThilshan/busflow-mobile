@@ -95,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: "Expense",
                       subtitle: "Maintenance and other expenses",
 
-                      onTap: () {},
+                      onTap: () {
+                        context.push("/add-new-expense");
+                      },
                     ),
                   ],
                 ),

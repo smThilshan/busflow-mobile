@@ -16,7 +16,7 @@ class _PreviewNewHireState extends State<PreviewNewHire> {
   Widget build(BuildContext context) {
     final previewData = GoRouterState.of(context).extra as HirePreviewData;
 
-    // Example data
+    // data
     final incomeData = [
       {"label": "Hire Amount", "amount": previewData.hireAmount},
     ];
@@ -105,7 +105,7 @@ class _PreviewNewHireState extends State<PreviewNewHire> {
               CustomActionBtn(
                 text: "Save",
                 onPressed: () {
-                  context.push("/home");
+                  context.push("/");
                 },
               ),
             ],

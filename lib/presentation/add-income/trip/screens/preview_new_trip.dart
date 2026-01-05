@@ -107,7 +107,7 @@ class _PreviewNewTripState extends State<PreviewNewTrip> {
               CustomActionBtn(
                 text: "Save",
                 onPressed: () {
-                  context.push("/home");
+                  context.push("/");
                 },
               ),
             ],

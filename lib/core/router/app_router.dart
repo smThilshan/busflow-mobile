@@ -1,3 +1,4 @@
+import 'package:bus_flow_admin/presentation/add-expense/add_expense.dart';
 import 'package:bus_flow_admin/presentation/add-income/hire/screens/add_new_hire.dart';
 import 'package:bus_flow_admin/presentation/add-income/trip/screens/add_new_trip.dart';
 import 'package:bus_flow_admin/presentation/add-income/hire/screens/preview_new_hire.dart';
@@ -30,6 +31,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/preview-new-hire',
       builder: (context, state) => const PreviewNewHire(),
+    ),
+    GoRoute(
+      path: '/add-new-expense',
+      builder: (context, state) => const AddExpense(),
     ),
   ],
 );
